@@ -48,10 +48,11 @@ p {
 
   }
   .location {
-    display: flex;
+    display:-webkit-flex;
     justify-content: center; 
     align-items: center;     
-    margin-bottom: 20px;          
+    margin-bottom: 30px;
+    margin-top: 50px;          
   }
   .bottom {
     display: flex;
@@ -96,4 +97,19 @@ p {
   }
   .bold{
     font-weight:700;
+  }
+  .app .search {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .app input {
+    padding: .7rem 1.5rem;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    border: 1px solid rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.2);
+  }
+  ::placeholder {
+    color: #f8f8f8;
   }
