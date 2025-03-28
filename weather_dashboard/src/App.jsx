@@ -6,7 +6,7 @@ function App() {
   const [data, setData] =useState({});
   const [location, setLocation] = useState('');
 
-  const url =`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=e5e7b343bdafbd282bc4eb37a3ba050e`;
+  const url =`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=e5e7b343bdafbd282bc4eb37a3ba050e`;
 
   const searchLocation = (event) => {
     if (event.key ==='Enter'&&location){
@@ -37,28 +37,33 @@ function App() {
       <div className="container">
         <div className="top">
           <div className="location">
-            <p>Pretoria</p>
+            <p>{data.name}</p>
           </div>
           <div className="temp">
-            <h1>27°C</h1>
+            {data.main ? <h1>{data.main.temp.toFixed()}°C</h1> : null}
           </div>
           <div className="description">
-            <p>Sunny</p>
+            {data.weather ? <p>{data.weather[0].main}</p> : null}
+            
           </div>
+          {data.name != undefined &&
           <div className="bottom">
-            <div className="feels">
-              <p className='bold'>27°C</p>
-            <p>Temperature</p>
-            </div>
-            <div className="humidity">
-              <p className='bold'>35%</p>
-              <p>Humidity</p>
-            </div>
-            <div className="wind">
-              <p className='bold'>8 MPH</p>
-              <p>Wind speed</p>
-            </div>
+          <div className="feels">
+           {data.main ? <p className='bold'>{data.main.feels_like.toFixed()}°C</p> : null}
+          <p>Feels like</p>
           </div>
+          <div className="humidity">
+          {data.main ? <p className='bold'>{data.main.humidity.toFixed()}%</p> : null}
+           
+            <p>Humidity</p>
+          </div>
+          <div className="wind">
+          {data.main ? <p className='bold'>{data.wind.speed.toFixed()}km/h</p> : null}
+            <p>Wind speed</p>
+          </div>
+        </div>
+          }
+          
         </div>
       </div>
 
@@ -68,3 +73,4 @@ function App() {
 
 
 export default App
+
