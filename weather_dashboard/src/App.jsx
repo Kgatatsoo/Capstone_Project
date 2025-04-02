@@ -16,6 +16,7 @@ function App() {
   })
   .catch((error) =>{
     console.error("Error retrieving data:",error);
+    alert('Error retrieving location. Please try again');
   });
 }
       
